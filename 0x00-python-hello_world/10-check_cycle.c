@@ -11,8 +11,8 @@ int check_cycle(listint_t *list)
 
 	if (list == NULL || list->next == NULL)
 		return (0);
-	tort = list->next;
-	hare = (list->next)->next;
+	tort = (list->next)->next;
+	hare = (list->next)->next->next->next;
 	for (; hare && tort; hare = hare->next->next,
 			tort =tort->next)
 	{
