@@ -13,9 +13,7 @@ int check_cycle(listint_t *list)
 		return (0);
 	tort = list->next;
 	hare = (list->next)->next;
-	if (hare == NULL)
-		return (0);
-	for (; hare && tort; hare = hare->next->next,
+	for (; hare && tort && hare->next; hare = hare->next->next,
 			tort = tort->next)
 	{
 		if (hare == tort)
