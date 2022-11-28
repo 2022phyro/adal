@@ -7,14 +7,16 @@
  */
 int check_cycle(listint_t *list)
 {
-	listint_t *tort, *hare;;
+	listint_t *tort, *hare;
 
-	if (list == NULL || list->next == NULL)
+	if (list == NULL || list->next == NULL || list->next->next == NULL)
 		return (0);
 	tort = (list->next)->next;
-	hare = (list->next)->next->next->next;
+	hare = (list->next)->next->next;
+	if (hare != NULL)
+		hare = hare->next;
 	for (; hare && tort; hare = hare->next->next,
-			tort =tort->next)
+			tort = tort->next)
 	{
 		if (hare == tort)
 			return (1);
