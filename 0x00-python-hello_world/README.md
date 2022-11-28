@@ -1,0 +1,1 @@
+Today being the 28th of November 2022 marks the beginning of sprint2 for cohort 9 at the ALX SE programme. In this directory, we take the first leap into python. here we will learn about the basic datatypes as well as an anntempt to integrate python with C
