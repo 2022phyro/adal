@@ -4,7 +4,6 @@ for i in range(9):
         if j <= i:
             continue
         if i == 8 and j == 9:
-            print(f"{i}{j}", end="\n")
+            print("{}{}".format(i, j), end="\n")
         else:
-            print(f"{i}{j}", end=", ")
-
+            print("{}{}".format(i, j), end=", ")
