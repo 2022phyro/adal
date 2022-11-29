@@ -80,7 +80,7 @@ void free_listint(listint_t *head)
  */
 int main(void)
 {
-    listint_t *head;
+    listint_t *head,*h = NULL;
 
     head = NULL;
     add_nodeint_end(&head, 0);
@@ -95,7 +95,9 @@ int main(void)
 
     printf("-----------------\n");
 
-    insert_node(&head, -27);
+    insert_node(&h, 2009);
+
+    insert_node(&head, -129);
 
     print_listint(head);
 
