@@ -1,12 +1,10 @@
 #!/usr/bin/python3
 def no_c(my_string):
-    my = my_string
-    temp = []
-    te2 = ""
-    for ad in range(len(my_string)):
-        if my[ad] == 'c' or my[ad] == 'C':
+    li = []
+    ens = ""
+    for i in range(len(my_string)):
+        if my_string[i] == "C" or my_string[i] == "c":
             pass
         else:
-            temp.append(my[ad])
-    print(temp)
-    my_string = "".join(temp)
+            li.append(my_string[i])
+    return "".join(li)
