@@ -7,19 +7,21 @@
  */
 int is_palindrome(listint_t **head)
 {
-	int i, j, *array;
+	int i, j, *array, ve = ARR;
 
 	if ((*head) == NULL || (*head)->next == NULL)
 		return (1);
 	i = 0;
-	array = malloc(sizeof(int) * ARR);
+	array = malloc(sizeof(int) * ve);
 	if (array == NULL)
 		return (0);
 
 	while ((*head))
 	{
-		if (i == ARR)
-			array =realloc(array, sizeof(int) * ARR);
+		if (i == ve)
+		{
+			ve += 10;
+			array =realloc(array, sizeof(int) * ve);
 		array[i] = (*head)->n;
 		(*head) = (*head)->next;
 		i++;

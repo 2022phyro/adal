@@ -5,4 +5,4 @@ def print_matrix_integer(matrix=[[]]):
             if mem == lis[-1]:
                 print("{:d}".format(mem))
             else:
-                print("{:d} ".format(mem), end="")
+                print("{:d}{}".format(mem, ' '), end="")
