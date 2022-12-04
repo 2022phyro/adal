@@ -1,52 +1,30 @@
 #include "lists.h"
-listint_t *rev(listint_t **head, int *idx) 
-{ 
-	listint_t *prev, *curr;  
-	if ((*head) == NULL)
-	{
-		return (NULL);
-	}
-	prev = (*head);
-	*idx = 1;
-	(*head) = (*head)->next;
-	prev->next = NULL;
-	curr = (*head);
+int rev(listint_t **head, int *array)
+{
+	int i = 0;
+
 	while ((*head))
 	{
+		array[i] = (*head)->n;
 		(*head) = (*head)->next;
-		curr->next = prev;
-		prev = curr;
-		curr = (*head);
-		*idx = *idx + 1;
+		i++;
 	}
-	(*head) = prev;
-	return (*head);
+	return (i);
 }
 int is_palindrome(listint_t **head)
 {
-	int ve, index, ma = 1;
-	listint_t *temp, *nem, *me;
+	int i, j, array[1024];
 
-/*	if ((*head) == NULL || (*head)->next == NULL)
-		return (1);*/
-	ve = 0;
-	nem = me = *head;
+	if ((*head) == NULL || (*head)->next == NULL)
+		return (1);
+	i = rev(head, array)
 
-	temp = rev(head, &ve);
-y	printf("%d", ve);
-	index = 0;
-	while (temp != NULL)
+	for (j = 0; j < i; j++, i--)
 	{
-		if (nem->n != temp->n)
+		if (array[i-1] != array[j])
 		{
-			return 0;
+			return (0);
 		}
-		if (index == ve / 2)
-			break;
-		nem = nem->next;
-		temp = temp->next;
-		index++;
 	}
-	return ma;
-
+	return (1);
 }
