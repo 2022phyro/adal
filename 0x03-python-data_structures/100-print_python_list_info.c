@@ -1,7 +1,5 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <objects.h>
-#include <listobjects.h>
+#include <Python.h>
 void print_python_list_info(PyObject *p)
 {
 	ssize_t i = PyList_Size(p);
