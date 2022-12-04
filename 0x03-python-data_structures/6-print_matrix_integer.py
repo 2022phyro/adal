@@ -3,6 +3,7 @@ def print_matrix_integer(matrix=[[]]):
     for ide in matrix:
         for mad in ide:
             if mad == ide[-1]:
-                print("{}".format(mad))
+                print("{}".format(mad), end="")
             else:
                 print("{}{}".format(mad, ' '), end="")
+        print()
