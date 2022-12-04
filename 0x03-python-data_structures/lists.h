@@ -2,7 +2,7 @@
 #define LISTS_H
 #include <stdio.h>
 #include <stdlib.h>
-#define ARR 150
+#define ARR 10
 /**
  * struct listint_s - singly linked list
  * @n: integer
