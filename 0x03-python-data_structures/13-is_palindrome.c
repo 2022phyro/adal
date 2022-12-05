@@ -7,34 +7,35 @@
  */
 int is_palindrome(listint_t **head)
 {
-	int i, j, *array, ve = ARR;
+	int i, j, k =  10, l, *p;
+	int array[k];
+	listint_t *temp, *temp2 = (*head);
 
+	i = 0;
+	j = 0;
+	p = &k;
+	temp = temp2;
 	if ((*head) == NULL || (*head)->next == NULL)
 		return (1);
-	i = 0;
-	array = malloc(sizeof(int) * ve);
-	if (array == NULL)
-		return (0);
-
-	while ((*head))
+	while (temp)
 	{
-		if (i == ve)
-		{
-			ve += 10;
-			array =realloc(array, sizeof(int) * ve);
-		array[i] = (*head)->n;
-		(*head) = (*head)->next;
+		temp = temp->next;
 		i++;
 	}
-
-	for (j = 0; j < i; j++, i--)
+	*p = i;
+	i--;
+	while (temp2)
 	{
-		if (array[i - 1] != array[j])
-		{
-			free(array);
-			return (0);
-		}
+		array[j] = temp2->n;
+		temp2 = temp2->next;
 	}
-	free(array);
+	for (l = 0; l < i; l++, i--)
+	{
+		printf("%d", i);
+		printf("%d--__--%d\n", array[l], array[i]);
+/*		if (array[l] != array[i])
+			return (0);*/
+	}
 	return (1);
 }
+

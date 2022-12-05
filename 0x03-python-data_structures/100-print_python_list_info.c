@@ -1,7 +1,13 @@
 #include <stdio.h>
 #include <Python.h>
 #include <object.h>
-#include <listobject.h>
+#include <listobject.h>i
+/**
+ * print_python_list_info - prints basic information about a python list
+ *
+ * @p: the pyobject to be checked
+ * Return: nothing it is a void function
+ */
 void print_python_list_info(PyObject *p)
 {
 	int i, j, mem;
@@ -14,7 +20,7 @@ void print_python_list_info(PyObject *p)
 	printf("[*] Size of the Python List = %d\n", i);
 	printf("[*] Allocated = %d\n", mem);
 	for (j = 0; j < i; j++)
-        {
+	{
 		printf("Element %d: %s\n", j, ab->ob_item[j]->ob_type->tp_name);
 	}
 
