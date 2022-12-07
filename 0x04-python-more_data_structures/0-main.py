@@ -1,13 +1,10 @@
 #!/usr/bin/python3
-square_matrix_map = \
-    __import__('101-square_matrix_map').square_matrix_map
+best_score = __import__('10-best_score').best_score
 
-matrix = [
-    [1, 2, 3],
-    [4, 5, 6],
-    [7, 8, 9]
-]
+a_dictionary = {'John': 12, 'Bob': 14, 'Mike': 14, 'Molly': 16, 'Adam': 10}
+best_key = best_score((2, 3, 4))
+print("Best score: {}".format(best_key))
 
-new_matrix = square_matrix_map(matrix)
-print(new_matrix)
-print(matrix)
+best_key = best_score(None)
+print("Best score: {}".format(best_key))
+
