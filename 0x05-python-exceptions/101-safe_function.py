@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-import sysi
+import sys
 
 
 def safe_function(fct, *args):
