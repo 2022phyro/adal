@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""This class is able to take comparison operators"""
+
+
 class Square:
     """Represent a square."""
 
