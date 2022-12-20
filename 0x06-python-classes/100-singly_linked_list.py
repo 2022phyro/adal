@@ -34,7 +34,7 @@ class Node:
     def next_node(self, value):
         """This sets the next node safely without
         an unwarranted change of value"""
-        if not isinstance(value, Node):
+        if not isinstance(value, Node) and value is not None:
             raise TypeError("next_node must be a Node object")
         self.__next_node = value
 

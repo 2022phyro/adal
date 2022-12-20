@@ -1,25 +1,21 @@
 #!/usr/bin/python3
-"""In this module, we would get our introduction to getters and setters
-for the first time"""
-
-
 class Square:
-    """This class contains three methonds:
-        an init, a size, and area, then getter and setter"""
+    """Represent a square."""
+
     def __init__(self, size=0):
-        """This initializes the string in a safe mode"""
-        self.__size = size
+        """Initialize a new square.
+        Args:
+            size (int): The size of the new square.
+        """
+        self.size = size
 
     @property
     def size(self):
-        """This is a getter function.
-            It returns the value of size safely"""
+        """Get/set the current size of the square."""
         return (self.__size)
 
     @size.setter
     def size(self, value):
-        """This is the setter function. It prevents unwarranted modification
-        of the size attribute by users"""
         if not isinstance(value, int):
             raise TypeError("size must be an integer")
         elif value < 0:
@@ -27,10 +23,29 @@ class Square:
         self.__size = value
 
     def area(self):
-        """This is the former area function.
-        it gives the area of the square"""
-        return (self.__size ** 2)
-    def __eq__(self):
-        """This class can answer to comparators using the
-        repr method"""
-        return int(self.__size ** 2)
+        """Return the current area of the square."""
+        return (self.__size * self.__size)
+
+    def __eq__(self, other):
+        """Define the == comparision to a Square."""
+        return self.area() == other.area()
+
+    def __ne__(self, other):
+        """Define the != comparison to a Square."""
+        return self.area() != other.area()
+
+    def __lt__(self, other):
+        """Define the < comparison to a Square."""
+        return self.area() < other.area()
+
+    def __le__(self, other):
+        """Define the <= comparison to a Square."""
+        return self.area() <= other.area()
+
+    def __gt__(self, other):
+        """Define the > comparison to a Square."""
+        return self.area() > other.area()
+
+    def __ge__(self, other):
+        """Define the >= compmarison to a Square."""
+        return self.area() >= other.area()
