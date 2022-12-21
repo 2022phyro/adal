@@ -1,12 +1,21 @@
-# **WELCOME TO HIGHER LEVEL PROGRAMMING**
+# 0X00-PYTHON-HELLO_WORLD
+Welcome to Python with ALX. Here we will see our very first pyhton programs with a little splash of C to go with it. 
+## Files:file_folder:
+Below are the files in this repository
 
-Today being the 28th of November 2022 marks the beginning of sprint2 for cohort 9 at the ALX SE programme. In this directory, we take the first leap into python. here we will learn about the basic datatypes as well as attempt to integrate python with C. We will see what CPython is and moreover, we will finally get to see something more interesting than the pain in the ass of using betty.
-## ***REPOSITORIES :file_folder:***
-### Below are the repositories in this repository
-* [0x00-python-hello_world](./0x00-python-hello_world)
-* [0x01-python-if_else_loops_functions](./0x01-python-if_else_loops_functions)
-* [0x02-python-import_modules](./0x02-python-import_modules)
-* [0x03-python-data_structures](./0x03-python-data_structures)
-* [0x04-python-more_data_structures](./0x04-python-more_data_structures)
-* [0x05-python-exceptions](./0x05-python-exceptions)
-* [0x06-python-classes](./0x06-python-classes)
+|**FILE**|**FUNCTION**|
+|:---:|:------|
+|0-run
+|1-run_inline
+|10-check_cycle.c
+|100-write.py
+101-compile
+102-magic_calculation.py
+2-print.py
+3-print_number.py
+4-print_float.py
+5-print_string.py
+6-concat.py
+7-edges.py
+8-concat_edges.py
+9-easter_egg.py
