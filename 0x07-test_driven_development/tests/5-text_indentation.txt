@@ -35,3 +35,7 @@ TypeError: text must be a string
 >>> text_indentation(6)
 Traceback (most recent call last):
 TypeError: text must be a string
+>>> text_indentation("I am      going to see Burger.Hello there I didn't see you coming")
+I am      going to see Burger.
+<BLANKLINE>
+Hello there I didn't see you coming

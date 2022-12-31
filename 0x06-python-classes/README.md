@@ -1,1 +1,3 @@
-hello
+# 0x06-PYTHON-CLASSES
+
+What is a class? It is simply a group of entities related by a common attribute. You talk about the rich class because they all have one thing in common, money. That's their atttribute, and so it is in programming in Pyhton. A class is simply a type of variable that has attributes attached to it. THis is OOP, **Object Oriented Programming** and we view everything as objects or unique entities. This is a far leap from the procedural style of older languages like C and the advantage are numerous as we can bind functions to specific datatypes. Strictly speaking, every datatype in Python is a class :laughing: In this directory, we will learn all about classes and their attributes, how to access them, use them, protect them, display them and lots more

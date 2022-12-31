@@ -1,6 +1,7 @@
 # 0X00-1-PYTHON_IF_ELSE_LOOPS_FUNCTION
 
 This repository contains our first tasks on loops and creating simple or not so simple :stuck_out_tongue_winking_eye: functions
+
 ## Files :file_folder:
 
 Below are the files in this repository
@@ -16,8 +17,8 @@ Below are the files in this repository
 
 * ### ***PYTHON***
   
-|**FILE**|**FUNCTION**|
-|:---:|:------
+|**FILE**|**FUNCTION**|**ACTION**|
+|:---:|:----|:---|
 |[0-positive_or_negative.py](./0-positive_or_negative.py)|It checks if the number in the source code is positive or negative and prints out a result|
 |[1-last_digit.py](./1-last_digit.py)|It checks if the last digit of the number in the source code is zero or less than 6 and not zero or if it is greater than 5
 |[3-print_alphabt.py](./3-print_alphabt.py)|It prints all the letters of the alphabet in lowercase except q and e|
@@ -27,7 +28,16 @@ Below are the files in this repository
 |[7-islower.py](./7-islower.py)|It checks if a number is in lowercase|
 |[8-uppercase.py](./8-uppercase.py)|It prints all letters in uppercase|
 |[9-print_last_digit.py](./9-print_last_digit.py)|It prints the last digit of a number|
-|[10-add.py](./10-add.py)|IT adds two numbers and returns the result
+|[10-add.py](./10-add.py)|It adds two numbers and returns the result|
+|[11-pow.py](./11-pow.py)|It returns the power of two numbers|
+|[12-fizzbuzz.py](./12-fizzbuzz.py)|It prints out the classic fizzbuzz challenge|
+|[100-print_tebalpha.py](./100-print_tebahpla.py)|It prints the smaller letters in reverse|
+|[101-remove_char_at.py](./101-remove_char_at.py)|It removes the character at a given index in the string
+|[102-magic_calculation.py](./102-magic_calculation.py)|This function performs the same action as the bytecode provided as reference|
 
-
-
+## SEE ALSO
+<details>
+  <summary> </summary>
+  All files beginning with 100 and above are advanced tasks</br>
+ Compile the C files with -Wall -Werror -Wextra std=99 and -pedantic
+ </details>
