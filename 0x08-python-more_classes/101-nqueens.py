@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import sys
 """This module attempts to solve the famous N queens puzzle
 The N queens puzzle is the challenge of placing N non-attacking queens on
