@@ -99,17 +99,19 @@ not a list, a ValueError is raised.
 
     >>> print(lazy_matrix_mul("not a list", [[1, 2]]))
     Traceback (most recent call last):
-    numpy.core._exceptions._UFuncNoLoopError: ufunc 'multiply' did not contain a loop with signature matching types (dtype('<U10'), dtype('<U1')) -> None
+    ValueError: Scalar operands are not allowed, use '*' instead
 
 ::
 
     >>> print(lazy_matrix_mul([[1, 2]], "also not a list"))
     Traceback (most recent call last):
-    numpy.core._exceptions._UFuncNoLoopError: ufunc 'multiply' did not contain a loop with signature matching types (dtype('<U1'), dtype('<U15')) -> None
-    
+    ValueError: Scalar operands are not allowed, use '*' instead
+
+::
+
     >>> print(lazy_matrix_mul("not a list", "also not a list"))
     Traceback (most recent call last):
-    numpy.core._exceptions._UFuncNoLoopError: ufunc 'multiply' did not contain a loop with signature matching types (dtype('<U10'), dtype('<U15')) -> None
+    ValueError: Scalar operands are not allowed, use '*' instead
 
 If either parameter is ``None``, a TypeError is raised.
 
@@ -117,7 +119,7 @@ If either parameter is ``None``, a TypeError is raised.
 
     >>> print(lazy_matrix_mul(None, None))
     Traceback (most recent call last):
-    TypeError: unsupported operand type(s) for *: 'NoneType' and 'NoneType'
+    TypeError: Object arrays are not currently supported
 
 Not just any list - they *must* be lists of lists! Otherwise, behavior is
 undefined.
@@ -151,13 +153,13 @@ integers or floats! Otherwise, a ValueError or TypeError is raised
 
     >>> print(lazy_matrix_mul([[5, 6], [7, 8]], [[5, "6"], [7, 8]]))
     Traceback (most recent call last):
-    ValueError: data type must provide an itemsize
+    TypeError: invalid data type for einsum
 
 ::
 
     >>> print(lazy_matrix_mul([[1, "non-number"]], [[{"a": 1}, 8.8]]))
     Traceback (most recent call last):
-    ValueError: shapes (1,2) and (1,2) not aligned: 2 (dim 1) != 1 (dim 0)
+    TypeError: Object arrays are not currently supported
 
 Finally, the length of all rows in matrices ``m_a`` and ``m_b`` should be
 equivalent. Otherwise, a ValueError is raised.
@@ -174,7 +176,7 @@ equivalent. Otherwise, a ValueError is raised.
     ... ]
     >>> print(lazy_matrix_mul(m_a, m_b))
     Traceback (most recent call last):
-    ValueError: setting an array element with a sequence. The requested array has an inhomogeneous shape after 1 dimensions. The detected shape was (2,) + inhomogeneous part.
+    ValueError: setting an array element with a sequence.
 
 ::
 
@@ -188,7 +190,7 @@ equivalent. Otherwise, a ValueError is raised.
     ... ]
     >>> print(lazy_matrix_mul(m_a, m_b))
     Traceback (most recent call last):
-    ValueError: setting an array element with a sequence. The requested array has an inhomogeneous shape after 1 dimensions. The detected shape was (2,) + inhomogeneous part.
+    ValueError: setting an array element with a sequence.
 
 ::
 
@@ -199,7 +201,4 @@ equivalent. Otherwise, a ValueError is raised.
     >>> m_b = m_a
     >>> print(lazy_matrix_mul(m_a, m_b))
     Traceback (most recent call last):
-    ValueError: setting an array element with a sequence. The requested array has an inhomogeneous shape after 1 dimensions. The detected shape was (2,) + inhomogeneous part.
-    
-    >>> ma = "Holberton"
-    >>> mb = [[5, 6], [7, 8]]
+    ValueError: setting an array element with a sequence.
