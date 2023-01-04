@@ -17,3 +17,4 @@ Today being the 28th of November 2022 marks the beginning of sprint2 for cohort 
 * [0x06-python-classes](./0x06-python-classes)
 * [0x07est_driven_development](./0x07-test_driven_development)
 * [0x08-python-more_classes](./0x08-python-more_classes)
+* [0x09-python-everything_is_object](./0x09-python-everything_is_object) 
