@@ -1,8 +1,8 @@
 #!/usr/bin/python3
-import numpy as np
-import sys
 """This module also odoes matrix multiplication, but with two lines of code
 """
+import numpy as np
+
 
 
 def lazy_matrix_mul(m_a, m_b):
@@ -15,4 +15,4 @@ def lazy_matrix_mul(m_a, m_b):
     Returns:
         list: the multiplied result
     """
-    return np.dot(m_a, m_b)
+    return (np.dot(m_a, m_b))
