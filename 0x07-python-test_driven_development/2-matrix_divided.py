@@ -19,21 +19,15 @@ def matrix_divided(matrix, div):
         list: a list of lists of the divided integers/floats
                 rounded to two decimal places
     """
-    result = []
-    if (not isinstance(matrix, list) or
-            not all(isinstance(num, list) for num in matrix)):
+
+    if (not isinstance(matrix, list) or matrix == [] or
+            not all(isinstance(num, list) for num in matrix) or
+            not all((isinstance(mem, int) or isinstance(mem, float))
+                    for mem in [num for row in matrix for num in row])):
         raise TypeError("matrix must be a matrix \
 (list of lists) of integers/floats")
-    for num in matrix:
-        if not (all(isinstance(mem, int) for mem in num) or
-                all(isinstance(mem, float) for mem in num)):
-            raise TypeError("matrix must be a matrix (list of lists) \
-of integers/floats")
     if not all(len(num) == len(matrix[0]) for num in matrix):
         raise TypeError("Each row of the matrix must have the same size")
     if not (isinstance(div, int) or isinstance(div, float)):
         raise TypeError("div must be a number")
-    for value in matrix:
-        new_result = [round(num / div, 2) for num in value]
-        result.append(new_result)
-    return result
+    return ([list(map(lambda x: round(x / div, 2), row)) for row in matrix])
