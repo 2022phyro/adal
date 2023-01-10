@@ -12,14 +12,10 @@ class Student:
 
     def to_json(self, attrs=None):
         """Returns a serializable representation of the class"""
-        if not attrs or not (isinstance(attrs, list) or
-                             all(isinstance(am, str) for am in attrs)):
-            return self.__dict__
-        a = {}
-        for key, value in self.__dict__.items():
-            if key in attrs:
-                a[key] = value
-        return a
+        if (type(attrs) == list and
+                all(type(ele) == str for ele in attrs)):
+            return  {k: getattr(self, k) for k in attrs if hasattr(self, k)}
+        return self.__dict__
 
     def reload_from_json(self, json):
         """Initialize a class' attributes from a dictionary"""
