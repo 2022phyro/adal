@@ -1,4 +1,4 @@
-#!/isr/bin/python3
+#!/usr/bin/python3
 """This file contains a function for reading"""
 
 
