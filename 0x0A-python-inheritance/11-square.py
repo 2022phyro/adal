@@ -21,6 +21,8 @@ class Square(Rectangle):
         self.integer_validator("size", size)
         super(Square, self).__init__(size, size)
         self.__size = size
+        self.__width = size
+        self.__height = size
 
     def __str__(self):
         """Overrides the str method in the parent class
