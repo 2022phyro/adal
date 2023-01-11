@@ -19,6 +19,8 @@ class Square(Rectangle):
             size (int): the dimensions for the square
         """
         super(Square, self).__init__(size, size)
+        self.__width = size
+        self.__height = size
 
     def __str__(self):
         """Overrides the str method in the parent class
@@ -26,4 +28,4 @@ class Square(Rectangle):
         Returns:
             str: A string representation of the Square
         """
-        return f"[Square] {self._Rectangle__width}/{self._Rectangle__height}"
+        return f"[Square] {self.__width}/{self.__height}"
