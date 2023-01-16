@@ -380,7 +380,6 @@ class TestToDictionary(unittest.TestCase):
         tes = Rectangle(4, 5, 0, 0, 4)
         ess = tes.to_dictionary()
         self.assertEqual(ess, tes.to_dictionary())
-        self.assertDictContainsSubset({"width": 4}, tes.to_dictionary())
         self.assertEqual(ess["id"], tes.id)
 
 

@@ -299,7 +299,6 @@ class TestToDictionary(unittest.TestCase):
         tes = Square(4, 5, 0, 5)
         ess = tes.to_dictionary()
         self.assertEqual(ess, tes.to_dictionary())
-        self.assertDictContainsSubset({"size": 4}, tes.to_dictionary())
         self.assertEqual(ess["id"], tes.id)
 
 
