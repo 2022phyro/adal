@@ -159,7 +159,8 @@ class Base:
             list_rectangles (list): A list of Rectangle instances
             list_squares (list): A list of Square instances
         """
-        colors = ["#cd131e", "gold", "yellow", "red", "orange", "cyan", "purple", "violet", "#411dde"]
+        colors = ["#cd131e", "gold", "yellow", "red",
+                  "orange", "cyan", "purple", "violet"]
         base = turtle.Turtle()
         base.screen.bgcolor("white")
         base.shape("turtle")

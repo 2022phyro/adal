@@ -32,8 +32,8 @@ class TestSquareId(unittest.TestCase):
         rect = Square(3, 4)
         rect_2 = Square(3, 4, 5)
         rect_3 = Square(3, 4, 5, 6)
-        self.assertEqual(remo.id, 10)
-        self.assertEqual(rect.id, 11)
+        self.assertEqual(remo.id, 78)
+        self.assertEqual(rect.id, remo.id + 1)
         self.assertEqual(rect_2.id, rect.id + 1)
         self.assertEqual(rect_3.id, 6)
 

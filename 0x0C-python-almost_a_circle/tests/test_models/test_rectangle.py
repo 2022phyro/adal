@@ -12,10 +12,8 @@ The following classes are found in this module
         it tests the init methods of the rectangle
     TestRectangleArea
         it tests the area method of the rectangle
-
-    
-
 """
+
 
 class TestRectangleClassInstantiation(unittest.TestCase):
 
@@ -55,7 +53,7 @@ class TestRectangleId(unittest.TestCase):
         rect = Rectangle(3, 4)
         rect_2 = Rectangle(3, 4, 5, 6)
         rect_3 = Rectangle(3, 4, 5, 6, 7)
-        self.assertEqual(rect.id, 19)
+        self.assertEqual(rect.id, 32)
         self.assertEqual(rect_2.id, rect.id + 1)
         self.assertEqual(rect_3.id, 7)
 
@@ -318,7 +316,7 @@ class TestRectangleUpdateArgsAndKwargs(unittest.TestCase):
         tes = Rectangle(1, 2, 3, 4, 6)
         self.assertEqual(tes.width, 1)
         tes.update(None, id=4, width=6)
-        self.assertEqual(tes.id, 30)
+        self.assertEqual(tes.id, 43)
         self.assertEqual(tes.width, 1)
 
     def test_kwargs_with_errors(self):

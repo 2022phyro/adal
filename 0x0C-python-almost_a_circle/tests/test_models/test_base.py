@@ -86,7 +86,10 @@ class TestLoadFromFile(unittest.TestCase):
     @staticmethod
     def teardown(flag, filename):
         if flag is None:
-            os.remove(filename)
+            try:
+                os.remove(filename)
+            except IOError:
+                pass
         else:
             with open(filename, 'w') as ft:
                 ft.write(flag)
@@ -177,7 +180,10 @@ class TestSaveToJson(unittest.TestCase):
     @staticmethod
     def teardown(flag, filename):
         if flag is None:
-            os.remove(filename)
+            try:
+                os.remove(filename)
+            except IOError:
+                pass
         else:
             with open(filename, 'w') as ft:
                 ft.write(flag)
@@ -252,7 +258,10 @@ class TestSaveToJsonRect(unittest.TestCase):
     @staticmethod
     def teardown(flag, filename):
         if flag is None:
-            os.remove(filename)
+            try:
+                os.remove(filename)
+            except IOError:
+                pass
         else:
             with open(filename, 'w') as ft:
                 ft.write(flag)
@@ -312,6 +321,119 @@ class TestSaveToJsonRect(unittest.TestCase):
         with open("Rectangle.json", 'r') as ft:
             self.assertEqual(ft.read(), '[]')
         self.teardown(flag, "Rectangle.json")
+
+
+class TestSaveToFileCsv(unittest.TestCase):
+    @staticmethod
+    def check(filename):
+        try:
+            a = ""
+            with open(filename, 'r') as ft:
+                a = ft.read()
+            return a
+        except IOError:
+            return None
+
+    @staticmethod
+    def teardown(flag, filename):
+        if flag is None:
+            try:
+                os.remove(filename)
+            except IOError:
+                pass
+        else:
+            with open(filename, 'w') as ft:
+                ft.write(flag)
+
+    def test_save_to_csv_rect(self):
+        filename = "Rectangle.csv"
+        flag = self.check(filename)
+        r1 = Rectangle(10, 7, 2, 8, 1)
+        r2 = Rectangle(2, 4, 0, 0, 2)
+        list_r = [r1, r2]
+        expected = "1,10,7,2,8\n2,2,4,0,0\n"
+        Rectangle.save_to_file_csv(list_r)
+        with open(filename, 'r') as csv_c:
+            self.assertEqual(csv_c.read(), expected)
+        self.teardown(flag, filename)
+
+    def test_save_to_csv_square(self):
+        filename = "Square.csv"
+        flag = self.check(filename)
+        s1 = Square(5, 0, 0, 1)
+        s2 = Square(7, 9, 1, 2)
+        expected = "1,5,0,0\n2,7,9,1\n"
+        list_s = [s1, s2]
+        Square.save_to_file_csv(list_s)
+        with open(filename, 'r') as csv_c:
+            self.assertEqual(csv_c.read(), expected)
+        self.teardown(flag, filename)
+
+
+class TestLoadFromCsv(unittest.TestCase):
+    @staticmethod
+    def check(filename):
+        try:
+            a = ""
+            with open(filename, 'r') as ft:
+                a = ft.read()
+            return a
+        except IOError:
+            return None
+
+    @staticmethod
+    def teardown(flag, filename):
+        if flag is None:
+            try:
+                os.remove(filename)
+            except IOError:
+                pass
+        else:
+            with open(filename, 'w') as ft:
+                ft.write(flag)
+
+    def prep_rectangle(self, filename, value=None):
+        return_v = self.check(filename)
+        if value is None:
+            try:
+                os.remove(filename)
+            except IOError:
+                pass
+        if value is not None:
+            with open(filename, 'w') as f:
+                f.write(value)
+        return return_v
+
+    def test_load_from_csv_rect(self):
+        filename = "Rectangle.csv"
+        value = '1,10,7,2,8\n2,2,4,0,0\n'
+        r1 = Rectangle(10, 7, 2, 8, 1)
+        r2 = Rectangle(2, 4, 0, 0, 2)
+        flag = self.prep_rectangle(filename, value)
+        result = Rectangle.load_from_file_csv()
+        self.assertEqual(
+            r1.to_dictionary(), result[0].to_dictionary()
+        )
+        self.assertEqual(
+            r2.to_dictionary(), result[1].to_dictionary()
+        )
+        self.teardown(flag, filename)
+
+    def test_load_from_csv_square(self):
+        filename = "Square.csv"
+        value = '5,5,0,0\n6,7,9,1\n'
+
+        s1 = Square(5, 0, 0, 5)
+        s2 = Square(7, 9, 1, 6)
+        flag = self.prep_rectangle(filename, value)
+        result = Square.load_from_file_csv()
+        self.assertEqual(
+            s1.to_dictionary(), result[0].to_dictionary()
+        )
+        self.assertEqual(
+            s2.to_dictionary(), result[1].to_dictionary()
+        )
+        self.teardown(flag, filename)
 
 
 if __name__ == '__main__':
