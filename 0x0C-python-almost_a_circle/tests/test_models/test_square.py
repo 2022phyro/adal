@@ -65,24 +65,24 @@ class TestSquareSize(unittest.TestCase):
 
     def test_size_setter(self):
         tes = Square(1)
-        tes.size = 5
-        self.assertEqual(5, tes.size)
+        tes.width = 5
+        self.assertEqual(5, tes.width)
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
-            tes.size = "4"
+            tes.width = "4"
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
-            tes.size = [4]
+            tes.width = [4]
         with self.assertRaisesRegex(ValueError, "width must be > 0"):
-            tes.size = 0
+            tes.width = 0
         with self.assertRaisesRegex(ValueError, "width must be > 0"):
-            tes.size = -5
+            tes.width = -5
 
     def test_size_getter(self):
         tes = Square(4)
-        self.assertEqual(4, tes.size)
+        self.assertEqual(4, tes.width)
         tes.size = 7
-        a = tes.size
+        a = tes.width
         self.assertEqual(a, 7)
-        self.assertEqual(7, tes.size)
+        self.assertEqual(7, tes.width)
 
 
 class TestSquareX(unittest.TestCase):
@@ -187,52 +187,51 @@ class TestSquareArea(unittest.TestCase):
 
         def test_update_kwargs_with_args_is_none(self):
             tes = Square(1, 2, 3, 4)
-            self.assertEqual(tes.size, 1)
+            self.assertEqual(tes.width, 1)
             tes.update(None, id=4, width=6)
             self.assertEqual(tes.id, 24)
-            self.assertEqual(tes.size, 1)
+            self.assertEqual(tes.width, 1)
 
         def test_kwargs_with_errors(self):
             tes = Square(2, 3, 11, 12)
             self.assertEqual(tes.width, 2)
-            tes.update(width=6, height=10, id=4)
+            tes.update(width=6, x=10, id=4)
             self.assertEqual(tes.id, 4)
             self.assertEqual(tes.width, 6)
-            self.assertEqual(tes.height, 10)
+            self.assertEqual(tes.x, 10)
 
         def test_update_args_is_not_none_with_kwargs(self):
-            tes = Rectangle(1, 2)
+            tes = Square(1)
             self.assertEqual(tes.width, 1)
             tes.update(4, 6, 5, width=7, id=2, height=10)
             self.assertEqual(tes.id, 4)
             self.assertEqual(tes.width, 6)
-            self.assertEqual(tes.height, 5)
+            self.assertEqual(tes.x, 5)
 
         def test_update_kwargs_with_wrong_key(self):
-            tes = Rectangle(1, 2)
+            tes = Square(1)
             self.assertEqual(tes.width, 1)
             tes.update(width=6, id=4, height=5, x=8, mes=2)
             self.assertEqual(tes.id, 4)
             self.assertEqual(tes.width, 6)
-            self.assertEqual(tes.height, 5)
-            self.assertEqual(tes.x, 8)
+            self.assertEqual(tes.x, 5)
+            self.assertEqual(tes.y, 8)
 
         def test_update_kwargs_with_wrong_value(self):
-            tes = Rectangle(1, 2, 0, 0, 1)
+            tes = Square(1, 0, 0, 1)
             self.assertEqual(tes.width, 1)
             with self.assertRaisesRegex(TypeError, "width must be an integer"):
-                tes.update(width="6", id=4, height=5, x=8, mes=2, y=9)
+                tes.update(size="6", id=4, x=8, mes=2, y=9)
             self.assertEqual(tes.id, 1)
             self.assertEqual(tes.width, 1)
-            self.assertEqual(tes.height, 2)
             self.assertEqual(tes.x, 0)
             self.assertEqual(tes.y, 0)
 
         def test_update_args_error_in_1(self):
-            tes = Rectangle(1, 2)
+            tes = Square(2)
             self.assertEqual(tes.width, 1)
             with self.assertRaisesRegex(TypeError, "width must be an integer"):
-                tes.update(4, "4", 5, 1, 2)
+                tes.update(4, "4", 5, 1)
             self.assertEqual(tes.width, 2)
 
         def test_update_args_error_in_2_and_above(self):
@@ -241,9 +240,9 @@ class TestSquareArea(unittest.TestCase):
             with self.assertRaisesRegex(TypeError, "width must be an integer"):
                 tes.update(4, "4,", [5], {3: 0}, 2)
             self.assertEqual(tes.id, 4)
-            self.assertEqual(tes.width, 2)
-            self.assertEqual(tes.height, 2)
-            self.assertEqual(tes.x, 0)
+            self.assertEqual(tes.width, 1)
+            self.assertEqual(tes.height, 1)
+            self.assertEqual(tes.x, 2)
             self.assertEqual(tes.y, 0)
 
     def test_update_args_1_with_kwargs(self):
@@ -253,18 +252,18 @@ class TestSquareArea(unittest.TestCase):
 
     def test_update_kwargs_with_args_is_none(self):
         tes = Square(1, 2, 3, 4)
-        self.assertEqual(tes.size, 1)
+        self.assertEqual(tes.width, 1)
         tes.update(None, id=6, size=6)
         self.assertEqual(tes.id, 3)
-        self.assertEqual(tes.size, 1)
+        self.assertEqual(tes.width, 1)
 
     def test_kwargs_with_errors(self):
         tes = Square(2, 3, 11, 12)
-        self.assertEqual(tes.size, 2)
+        self.assertEqual(tes.width, 2)
         tes.update(x=6, size=10, id=4)
         self.assertEqual(tes.id, 4)
         self.assertEqual(tes.x, 6)
-        self.assertEqual(tes.size, 10)
+        self.assertEqual(tes.width, 10)
 
     def test_update_args_is_not_none_with_kwargs(self):
         tes = Square(1, 2)
@@ -279,7 +278,7 @@ class TestSquareArea(unittest.TestCase):
         self.assertEqual(tes.width, 1)
         tes.update(size=6, id=4, y=5, x=8, mes=2)
         self.assertEqual(tes.id, 4)
-        self.assertEqual(tes.size, 6)
+        self.assertEqual(tes.width, 6)
         self.assertEqual(tes.y, 5)
         self.assertEqual(tes.x, 8)
 
@@ -289,7 +288,7 @@ class TestSquareArea(unittest.TestCase):
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
             tes.update(id=4, size='5', x=8, mes=2, y=9)
         self.assertEqual(tes.id, 4)
-        self.assertEqual(tes.size, 1)
+        self.assertEqual(tes.width, 1)
         self.assertEqual(tes.x, 2)
         self.assertEqual(tes.y, 0)
 
