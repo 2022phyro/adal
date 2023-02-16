@@ -1,5 +1,5 @@
 -- this shows the sum of the ratings
-SELECT name, sum(rate) as rating
+SELECT name, sum(rate) AS rating
 FROM tv_genres
 NATURAL JOIN tv_show_genres
 NATURAL JOIN tv_show_ratings
