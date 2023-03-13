@@ -1,5 +1,5 @@
 #!/usr/bin/node
-function add (a, b) {
+exports.add =  function(a, b) {
   const result = a + b;
   return (result);
-} export {add}
+}
