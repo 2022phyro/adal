@@ -1,6 +1,6 @@
 #!/usr/bin/node
 const lenght = process.argv.length;
-if (lenght < 3) {
+if (lenght <= 3) {
   console.log(0);
 } else {
   const numbers = [];
