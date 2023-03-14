@@ -1,25 +1,11 @@
 #!/usr/bin/node
-dict = require('./101-data').dict;
-console.log(dict);
-let keys = Object.keys(dict);
-console.log(keys);
-new_dict = {};
-temp = [];
-console.log(keys);
-while (true) {
-  for (const key of keys) {
-    if ((dict[key]) === dict[keys[0]]) {
-      temp.push(key);
-      console.log(key);
-      console.log(temp);
-    }
+const dict = require('./101-data.js').dict;
+const newDict = {};
+for (const key in dict) {
+  if (newDict[dict[key]] === undefined) {
+    newDict[dict[key]] = [key];
+  } else {
+    newDict[dict[key]].push(key);
   }
-  new_dict[dict[keys[0]]] = temp;
-  keys = keys.filter(function (element, index) {
-    return (!(temp.includes(element)));
-  });
 }
-console.log(keys);
-console.log(temp);
-console.log(new_dict);
-console.log(keys);
+console.log(newDict);
