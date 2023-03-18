@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+"""The script handles an SQL injection in tryng to filter all
+the states that have a given name and stop malicious attacks"""
 import MySQLdb
 import sys
 if __name__ == "__main__":
@@ -7,7 +9,7 @@ if __name__ == "__main__":
     database = sys.argv[3]
     state = sys.argv[4]
     db = MySQLdb.connect(host="localhost", user=username, password=password,
-            database=database, port=3306)
+                         database=database, port=3306)
     cursor = db.cursor()
     cursor.execute('SELECT * FROM states WHERE name = %(name)s\
             ORDER BY id ASC', {'name': state})

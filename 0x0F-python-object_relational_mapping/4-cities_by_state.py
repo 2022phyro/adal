@@ -9,7 +9,7 @@ if __name__ == "__main__":
     password = sys.argv[2]
     database = sys.argv[3]
     db = MySQLdb.connect(host="localhost", user=username, password=password,
-            database=database, port=3306)
+                         database=database, port=3306)
     cursor = db.cursor()
     cursor.execute('SELECT cities.id, cities.name, states.name\
             FROM cities join states\

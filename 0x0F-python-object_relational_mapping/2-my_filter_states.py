@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+"""This script attempts to filer all the states to find the one
+that meets a particular query"""
 import MySQLdb
 import sys
 if __name__ == "__main__":
@@ -7,9 +9,10 @@ if __name__ == "__main__":
     database = sys.argv[3]
     state = sys.argv[4]
     db = MySQLdb.connect(host="localhost", user=username, password=password,
-            database=database, port=3306)
+                         database=database, port=3306)
     cursor = db.cursor()
-    cursor.execute('SELECT * FROM states WHERE name = "{}" ORDER BY id ASC'.format(state))
+    cursor.execute('SELECT * FROM states WHERE name = "{}"\
+            ORDER BY id ASC'.format(state))
     results = cursor.fetchall()
     cursor.close()
     db.close()

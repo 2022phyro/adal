@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""This module  takes in the name of a state as an argument and lists all cities of that state, using the database hbtn_0e_4_usa"""
+"""This module  takes in the name of a state as an argument
+and lists all cities of that state, using the database hbtn_0e_4_usa"""
 import MySQLdb
 import sys
 
@@ -10,7 +11,7 @@ if __name__ == "__main__":
     database = sys.argv[3]
     state = sys.argv[4]
     db = MySQLdb.connect(host="localhost", user=username, password=password,
-            database=database, port=3306)
+                         database=database, port=3306)
     cursor = db.cursor()
     cursor.execute('SELECT name FROM cities\
             WHERE cities.state_id = (\
