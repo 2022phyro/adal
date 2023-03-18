@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 """This script uses sqlalchemy to list all
 the states in a table"""
-from model_state import Base, State
+from model_state import State
 import sys
-from sqlalchemy import create_engine, asc
+from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 if __name__ == '__main__':
     engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.format(
@@ -11,5 +11,5 @@ if __name__ == '__main__':
                            pool_pre_ping=True)
     Session = sessionmaker(bind=engine)
     session = Session()
-    for state in session.query(State).order_by(asc(State.id)):
+    for state in session.query(State).order_by(State.id):
         print("{}: {}".format(state.id, state.name))
