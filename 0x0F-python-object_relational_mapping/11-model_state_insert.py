@@ -1,9 +1,9 @@
 #!/usr/bin/python3
-"""This script lists all State objects that contain the letter
-a from the database hbtn_0e_6_usa"""
+"""This script adds the State object “Louisiana” to the database
+hbtn_0e_6_usa"""
 from model_state import Base, State
 import sys
-from sqlalchemy import create_engine, asc
+from sqlalchemy import create_engine, asc, desc
 from sqlalchemy.orm import sessionmaker
 if __name__ == '__main__':
     engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.format(
@@ -12,12 +12,16 @@ if __name__ == '__main__':
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
+    new_state = State()
+    new_state.name = "Louisiana"
+    session.add(new_state)
+    session.commit()
     states = session.query(State).filter(
-        State.name.contains("a")
-    ).order_by(asc(State.id)).all()
+        State.name == "Louisiana"
+    ).order_by(desc(State.id)).limit(1)
     session.close()
     if not states:
-        print("Nothing")
+        print("Not found")
     else:
         for state in states:
-            print(f"{state.id}: {state.name}")
+            print(f"{state.id}")
