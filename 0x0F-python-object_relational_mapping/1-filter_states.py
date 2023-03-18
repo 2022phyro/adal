@@ -10,10 +10,10 @@ if __name__ == "__main__":
     db = MySQLdb.connect(host="localhost", user=username,
                          password=password, database=database, port=3306)
     cursor = db.cursor()
-    cursor.execute('SELECT * FROM states ORDER BY id ASC')
+    cursor.execute('SELECT * FROM states ORDER BY `id` ASC')
     results = cursor.fetchall()
     cursor.close()
     db.close()
     for result in results:
-        if result[0] == "N":
+        if result[1][0] == "N":
             print(result)

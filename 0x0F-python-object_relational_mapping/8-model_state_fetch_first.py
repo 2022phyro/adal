@@ -3,7 +3,7 @@
 the states in a table"""
 from model_state import State
 import sys
-from sqlalchemy import create_engine, asc
+from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 if __name__ == '__main__':
     engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.format(
@@ -11,9 +11,8 @@ if __name__ == '__main__':
                            pool_pre_ping=True)
     Session = sessionmaker(bind=engine)
     session = Session()
-    states = session.query(State).order_by(asc(State.id)).first()
-    if not states:
+    state = session.query(State).order_by(State.id).first()
+    if not state:
         print("Nothing")
     else:
-        for state in states:
-            print(f"{state.id}: {state.name}")
+        print("{}: {:s}".format(state.id, state.name))

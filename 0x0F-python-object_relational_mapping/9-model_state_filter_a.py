@@ -3,7 +3,7 @@
 a from the database hbtn_0e_6_usa"""
 from model_state import State
 import sys
-from sqlalchemy import create_engine, asc
+from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 if __name__ == '__main__':
     engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.format(
@@ -11,11 +11,7 @@ if __name__ == '__main__':
                            pool_pre_ping=True)
     Session = sessionmaker(bind=engine)
     session = Session()
-    states = session.query(State).filter(
+    for state in session.query(State).filter(
         State.name.contains("a")
-    ).order_by(asc(State.id)).all()
-    if not states:
-        print("Nothing")
-    else:
-        for state in states:
-            print(f"{state.id}: {state.name}")
+    ).order_by(State.id).all():
+        print("{}: {:s}".format(state.id, state.name))
