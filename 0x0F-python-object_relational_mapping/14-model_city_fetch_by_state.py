@@ -1,7 +1,8 @@
 #!/usr/bin/python3
-"""This script uses sqlalchemy to list all
-the states in a table"""
-from model_state import Base, State
+"""This script deletes all State objects with a name
+containing the letter a from the database hbtn_0e_6_usa"""
+from model_state import State
+from model_city import City
 import sys
 from sqlalchemy import create_engine, asc
 from sqlalchemy.orm import sessionmaker
@@ -11,10 +12,9 @@ if __name__ == '__main__':
                            pool_pre_ping=True)
     Session = sessionmaker(bind=engine)
     session = Session()
-    states = session.query(State).order_by(asc(State.id)).limit(1)
+    cities = session.query(City, State)\
+        .filter(City.state_id == State.id)\
+        .order_by(asc(City.id)).all()
     session.close()
-    if not states:
-        print("Nothing")
-    else:
-        for state in states:
-            print(f"{state.id}: {state.name}")
+    for city, state in cities:
+        print(f"{state.name}: ({city.id}) {city.name}")

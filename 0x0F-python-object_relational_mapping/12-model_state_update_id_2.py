@@ -1,9 +1,9 @@
 #!/usr/bin/python3
-"""This script uses sqlalchemy to list all
-the states in a table"""
+"""This script adds the State object “Louisiana” to the database
+hbtn_0e_6_usa"""
 from model_state import Base, State
 import sys
-from sqlalchemy import create_engine, asc
+from sqlalchemy import create_engine, asc, desc
 from sqlalchemy.orm import sessionmaker
 if __name__ == '__main__':
     engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.format(
@@ -11,10 +11,8 @@ if __name__ == '__main__':
                            pool_pre_ping=True)
     Session = sessionmaker(bind=engine)
     session = Session()
-    states = session.query(State).order_by(asc(State.id)).limit(1)
+    new_state = State()
+    state = session.query(State).get(2)
+    state.name = "New Mexico"
+    session.commit()
     session.close()
-    if not states:
-        print("Nothing")
-    else:
-        for state in states:
-            print(f"{state.id}: {state.name}")
