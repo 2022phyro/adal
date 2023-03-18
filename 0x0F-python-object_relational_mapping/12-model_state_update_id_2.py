@@ -1,9 +1,9 @@
 #!/usr/bin/python3
-"""This script adds the State object “Louisiana” to the database
-hbtn_0e_6_usa"""
-from model_state import Base, State
+"""This script changes the State with the id of 2
+to New Mexico"""
 import sys
-from sqlalchemy import create_engine, asc, desc
+from model_state import State
+from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 if __name__ == '__main__':
     engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.format(
@@ -11,8 +11,6 @@ if __name__ == '__main__':
                            pool_pre_ping=True)
     Session = sessionmaker(bind=engine)
     session = Session()
-    new_state = State()
     state = session.query(State).get(2)
     state.name = "New Mexico"
     session.commit()
-    session.close()

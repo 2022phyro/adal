@@ -25,4 +25,4 @@ if __name__ == "__main__":
     for result in results:
         for city in result:
             cities.append(city)
-    print(" ".join(cities))
+    print(", ".join(cities))

@@ -12,6 +12,5 @@ if __name__ == '__main__':
     Session = sessionmaker(bind=engine)
     session = Session()
     states = session.query(State).order_by(asc(State.id)).all()
-    session.close()
     for state in states:
         print(f"{state.id}: {state.name}")

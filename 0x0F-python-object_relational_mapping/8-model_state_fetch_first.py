@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """This script uses sqlalchemy to list all
 the states in a table"""
-from model_state import Base, State
+from model_state import State
 import sys
 from sqlalchemy import create_engine, asc
 from sqlalchemy.orm import sessionmaker
@@ -11,8 +11,7 @@ if __name__ == '__main__':
                            pool_pre_ping=True)
     Session = sessionmaker(bind=engine)
     session = Session()
-    states = session.query(State).order_by(asc(State.id)).limit(1)
-    session.close()
+    states = session.query(State).order_by(asc(State.id)).first()
     if not states:
         print("Nothing")
     else:

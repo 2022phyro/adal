@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """This script prints the State object with the name
 passed as argument from the database hbtn_0e_6_usa"""
-from model_state import Base, State
+from model_state import State
 import sys
 from sqlalchemy import create_engine, asc
 from sqlalchemy.orm import sessionmaker
@@ -15,7 +15,6 @@ if __name__ == '__main__':
     states = session.query(State).filter(
         State.name == s_name
     ).order_by(asc(State.id)).all()
-    session.close()
     if not states:
         print("Not found")
     else:

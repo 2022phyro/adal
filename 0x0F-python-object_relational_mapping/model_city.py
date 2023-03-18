@@ -9,6 +9,7 @@ from sqlalchemy.ext.declarative import declarative_base
 
 Base = declarative_base()
 
+
 class City(Base):
     """This class is actually a table in
     our database. It is a table of cities"""
