@@ -9,7 +9,9 @@ if __name__ == "__main__":
     req = requests.get(url).json()
     try:
         for i in range(10):
-            val = req[i]
-            print(f"{val['sha']}: {val['commit']['author']['name']}")
+            #print(f"{val['sha']}: {val['commit']['author']['name']}")
+            print("{}: {}".format(
+                req[i].get("sha"),
+                req[i].get("commit").get("author").get("name")))
     except IndexError:
         pass
