@@ -1,2 +1,0 @@
--- This inserts into the rows new values
-INSERT INTO first_table (id, name) VALUES (89, "Best School");
