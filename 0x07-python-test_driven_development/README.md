@@ -1,0 +1,3 @@
+# 0X07-TEST_DRIVEN_DEVELOPMENT
+
+In this directory, we will be introducing a totally new concept, that of``tests``. Whenever we write a piece of code, or function, we expect it to comfort to certain rules and cases. We don't usually know who will use your code in the future and you certainly don't want to tarnish your reputation by an indentation error :laughing: ***like I nearly did with a semi colon in C*** so we will create test cases and be sure to cover as many bases as possible. This directory contains files with different functions and tests for them respectively inside our [tests](./tests/) folder. As I am new, I may not cover all my bases Be sure to drop a feedback if you read through this directory and come across a test case I missed.
