@@ -31,7 +31,7 @@ class Square(Rectangle):
         Returns:
             int: returns the size
         """
-        return self.__size
+        return self.width
 
     @size.setter
     def size(self, value):
@@ -48,7 +48,6 @@ class Square(Rectangle):
             raise TypeError("width must be an integer")
         if value <= 0:
             raise ValueError("width must be > 0")
-        self.__size = value
         self.width = value
         self.height = value
 
@@ -72,7 +71,7 @@ class Square(Rectangle):
                     self.__init__(self.width, self.height, self.x, self.y)
 
             if i == 1:
-                self.size = args[1]
+                self.width = args[1]
             if i == 2:
                 self.x = args[2]
             if i == 3:
@@ -84,8 +83,7 @@ class Square(Rectangle):
                     setattr(self, key, value)
                 except KeyError:
                     continue
-        self.height = self.size
-        self.width = self.size
+        self.height = self.width
 
     def to_dictionary(self):
         """This returns a dict representing the class attributes
@@ -93,6 +91,6 @@ class Square(Rectangle):
         Returns:
             dict: the class attributes: value pair
         """
-        dict_s = {'id': self.id, 'size': self.size,
+        dict_s = {'id': self.id, 'size': self.width,
                   'x': self.x, 'y': self.y}
         return dict_s
